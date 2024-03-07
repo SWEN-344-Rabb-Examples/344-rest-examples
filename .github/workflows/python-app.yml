@@ -39,3 +39,6 @@ jobs:
       run: |
         # pytest
         echo "Would have been pytest" 
+        pwd
+        ls -l
+        py -m unittest
