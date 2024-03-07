@@ -4,8 +4,9 @@ on: push
 
 jobs:
   test:
-    runs-on: kalrabb/swen344-pg-py-base:latest
+    runs-on: ubuntu-latest
     timeout-minutes: 10
+    container: kalrabb/swen344-pg-py-base:latest
 
     services:
       db_service:
