@@ -15,6 +15,7 @@ jobs:
           POSTGRES_USER: swen344
           POSTGRES_DB: swen344
           POSTGRES_PASSWORD: whowatchesthewatchmen
+          DB_HOST: localhost
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
