@@ -1,0 +1,6 @@
+# change for your own PC
+host: localhost
+database: swen344
+user: swen344
+password: password
+port: 5432

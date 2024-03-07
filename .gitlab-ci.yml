@@ -1,0 +1,32 @@
+image:
+  name: kalrabb/swen344-pg-py-base:latest
+
+services:
+  - postgres:14
+
+variables:
+  POSTGRES_DB: swen344
+  POSTGRES_USER: swen344
+  POSTGRES_PASSWORD: whowatchesthewatchmen
+  PYTHON_RUN: python3
+  RUN_DIR: rest-1
+
+before_script:
+  - cd $RUN_DIR
+  - pip install -r ../requirements.txt
+  - cp config/gitlab-credentials.yml config/db.yml
+  - $PYTHON_RUN --version
+  - $PYTHON_RUN src/server.py & # fire up the server before we run our tests
+
+  - sleep 3
+
+testrunner:
+  script:
+    #- python -m unittest -v # run the unit tests; -v prints the test being run
+    - echo "\r" | $PYTHON_RUN -m unittest -v # satisfy the input() command so CI doesn't wait for user input
+
+    # - pytest # optional, use instead of unittest. friendlier output.
+
+    # - curl http://localhost:5000 # you can also debug a failure with curl
+
+  stage: test

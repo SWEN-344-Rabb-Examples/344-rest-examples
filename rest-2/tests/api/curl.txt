@@ -1,0 +1,13 @@
+curl http://localhost:5000/menu/2
+
+curl http://localhost:5000/menu?format=headings
+
+
+curl --header "Content-Type: application/json"  --request POST --data '{"food":"gyro","drink":"ouzo", "price": "20.15"}' http://localhost:5000/menu
+
+
+
+curl --header "Content-Type: application/json"  --request POST --data "{\"food\":\"gyro\",\"drink\":\"ouzo\", \"price\": \"20.15\"}" http://localhost:5000/menu
+
+
+ & 'C:\Program Files\Git\mingw64\bin\curl.exe'  --header "Content-Type: application/json"  --request POST --data "{\"food\":\"gyro\",\"drink\":\"ouzo\", \"price\": \"20.15\"}" http://localhost:5000/menu
