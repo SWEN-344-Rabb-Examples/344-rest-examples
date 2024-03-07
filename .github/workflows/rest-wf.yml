@@ -41,6 +41,7 @@ jobs:
       - name: Run test suite
         run: |
           cd rest-1
+          cp config/gitlab-credentials.yml config/db.yml
           ls -l
           echo "Starting Flask"
           python src/server.py &
