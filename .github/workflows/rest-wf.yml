@@ -24,11 +24,11 @@ jobs:
       python-version: 3.8.9
 
    - name: Install dependencies
-     run: 
+     run: |
        cd rest-1
        pip install -r requirements.txt
        python src/server.py &
        sleep 3
    - name: Run tests
-     run: 
+     run: |
        python -m unittest -v
