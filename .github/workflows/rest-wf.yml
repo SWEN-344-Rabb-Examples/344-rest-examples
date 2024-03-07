@@ -10,12 +10,11 @@ jobs:
 
     services:
       db_service:
-        image: postgres:14
+        image: postgres
         env:
           POSTGRES_USER: swen344
           POSTGRES_DB: swen344
           POSTGRES_PASSWORD: whowatchesthewatchmen
-          DB_HOST: localhost
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -27,6 +26,8 @@ jobs:
           - 5432:5432
 
     steps:
+      - name: Check pgsql
+        run: docker ps
       - name: Check out repository code
         uses: actions/checkout@v4
 
