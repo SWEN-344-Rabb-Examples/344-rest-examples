@@ -4,12 +4,12 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: kalrabb/swen344-pg-py-base:latest
     timeout-minutes: 10
 
     services:
       db_service:
-        image: kalrabb/swen344-pg-py-base:latest
+        image: postgres
         env:
           POSTGRES_USER: swen344
           POSTGRES_DB: swen344
