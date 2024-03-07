@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Check pgsql
-        run: docker ps
+        run: /usr/bin/docker ps
       - name: Check out repository code
         uses: actions/checkout@v4
 
