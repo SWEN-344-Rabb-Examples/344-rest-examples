@@ -41,4 +41,4 @@ jobs:
         echo "Would have been pytest" 
         pwd
         ls -l
-        py -m unittest
+        python -m unittest
