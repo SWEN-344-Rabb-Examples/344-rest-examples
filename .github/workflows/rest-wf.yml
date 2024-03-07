@@ -25,10 +25,10 @@ jobs:
 
    - name: Install dependencies
      run: |
-       cd rest-1
-       pip install -r requirements.txt
-       python src/server.py &
-       sleep 3
+        cd rest-1
+        pip install -r requirements.txt
+        python src/server.py &
+        sleep 3
    - name: Run tests
      run: |
-       python -m unittest -v
+        python -m unittest -v
