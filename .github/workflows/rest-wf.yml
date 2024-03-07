@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    container: kalrabb/swen344-pg-py-base:latest
+    #container: kalrabb/swen344-pg-py-base:latest
 
     services:
       db_service:
