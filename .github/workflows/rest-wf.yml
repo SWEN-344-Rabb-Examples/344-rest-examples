@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt update
-          apt install libc6
+          apt install libc6 -y
           python -m pip install -r requirements.txt
 
       - name: Run test suite
