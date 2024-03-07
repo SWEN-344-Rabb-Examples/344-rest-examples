@@ -42,4 +42,6 @@ jobs:
         cd rest-1
         pwd
         ls -l
+        python src/server.py &
+        sleep 3
         python -m unittest
