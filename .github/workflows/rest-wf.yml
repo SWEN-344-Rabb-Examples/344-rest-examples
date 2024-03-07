@@ -3,7 +3,7 @@ name: My Python Project
 on: push
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     container: kalrabb/swen344-pg-py-base:latest
@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Setup Python (faster than using Python container)
       - name: Setup Python
