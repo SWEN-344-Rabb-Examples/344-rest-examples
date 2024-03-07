@@ -9,7 +9,7 @@ jobs:
 
     services:
       db_service:
-        image: postgres
+        image: kalrabb/swen344-pg-py-base:latest
         env:
           POSTGRES_USER: swen344
           POSTGRES_DB: swen344
