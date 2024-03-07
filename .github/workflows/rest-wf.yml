@@ -1,34 +1,46 @@
-name: Test Workflow
-
-on: push 
+# .github/workflows/app.yaml
+name: My Python Project
+on: push
 
 jobs:
- test:
-   runs-on: ubuntu-latest
-   
-   services:
-    image: postgres
-    env:
-    - POSTGRES_USER: swen344
-    - POSTGRES_PASSWORD: whowatchesthewatchmen
-    - POSTGRES_DB: swen344
-    ports:
-    - 5432:5432
-    options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-   
-   steps:
-   - uses: actions/checkout@v2
-   - name: Set up Python 3.8.9
-   - uses: actions/setup-python@v2
-     with:
-      python-version: 3.8.9
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
 
-   - name: Install dependencies
-     run: |
-        cd rest-1
-        pip install -r requirements.txt
-        python src/server.py &
-        sleep 3
-   - name: Run tests
-     run: |
-        python -m unittest -v
+    services:
+      db_service:
+        image: postgres
+        env:
+          POSTGRES_USER: swen-344
+          POSTGRES_DB: swen344
+          POSTGRES_PASSWORD: whowatchesthewatchmen
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      # Setup Python (faster than using Python container)
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run test suite
+        run: |
+          cd rest-1
+          ls -l
+          python src/server.py &
+          sleep 3
+          python -m unittest -v
