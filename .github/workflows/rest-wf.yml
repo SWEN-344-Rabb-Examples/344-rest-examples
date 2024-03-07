@@ -12,9 +12,9 @@ jobs:
       db_service:
         image: postgres
         env:
-          POSTGRES_USER: swen344
+          POSTGRES_USER: postgres
           POSTGRES_DB: swen344
-          POSTGRES_PASSWORD: whowatchesthewatchmen
+        #  POSTGRES_PASSWORD: whowatchesthewatchmen
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
